@@ -4,7 +4,18 @@
 // Main content area
 .main {
   .make-sm-column(@main-sm-columns);
+  padding: 0;
   .sidebar-primary & {
     .make-sm-column(@main-sm-columns - @sidebar-sm-columns);
   }
 }
+
+// General
+
+.center-content {
+	width: 75%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+section.air { padding: 50px 0; }

@@ -19,7 +19,10 @@ module.exports = function(grunt) {
     'assets/vendor/bootstrap/js/tab.js',
     'assets/vendor/bootstrap/js/affix.js',
     'assets/js/plugins/*.js',
-    'assets/js/_*.js'
+    'assets/js/pulse.js',
+    'assets/js/menu.js',
+    'assets/js/size.js',
+    'assets/js/_main.js'
   ];
 
   grunt.initConfig({
@@ -123,10 +126,12 @@ module.exports = function(grunt) {
         }
       }
     },
+
+
     watch: {
       less: {
         files: [
-          'assets/less/*.less',
+          // 'assets/less/*.less',
           'assets/less/**/*.less'
         ],
         tasks: ['less:dev', 'autoprefixer:dev']
@@ -134,15 +139,16 @@ module.exports = function(grunt) {
       js: {
         files: [
           jsFileList,
+          'Gruntfile.js',
           '<%= jshint.all %>'
         ],
-        tasks: ['jshint', 'concat']
+        tasks: [/*'jshint', */'concat']
       },
       livereload: {
         // Browser live reloading
         // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
         options: {
-          livereload: false
+          livereload: true
         },
         files: [
           'assets/css/main.css',
@@ -159,10 +165,11 @@ module.exports = function(grunt) {
     'dev'
   ]);
   grunt.registerTask('dev', [
-    'jshint',
+    // 'jshint',
     'less:dev',
     'autoprefixer:dev',
-    'concat'
+    'concat',
+    'watch'
   ]);
   grunt.registerTask('build', [
     'jshint',

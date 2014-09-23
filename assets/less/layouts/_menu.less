@@ -1,0 +1,40 @@
+.nav {
+	width: 50%;
+	margin: 10% auto 0;
+	color: @white;
+
+	li {
+		text-align: center;
+		margin: 0 0 16px;
+		a {
+			font-family: @sans-bold;
+			text-transform: lowercase;
+			display: inline-block;
+			// padding: 5px 0 5px 45px;
+			padding: 5px 0;
+			font-size: 30px;
+			&:hover {
+				background: none;
+			}
+		}
+		span {
+			display: block;
+		}
+	}
+
+	.menu-portfolio a:before { background-image: url('../img/menu_portfolio.svg'); }
+	.menu-personer a:before { background-image: url('../img/menu_people.svg'); }
+	.menu-kontakt a:before { background-image: url('../img/menu_contact.svg'); }
+	.menu-blogg a:before { background-image: url('../img/menu_news.svg'); }
+
+	[class*="menu-"] a:before {
+		content: "";
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		left: -45px;
+		top: 0;
+	}
+}

@@ -2093,7 +2093,88 @@
   })
 
 }(jQuery);
-;/* ========================================================================
+;var pulse = {
+  init: function(){
+    pulse.start();
+  },
+  motion: function(){
+    $('#pulse').show().animate({width:'40px', height:'40px', top:0, left:0, opacity:0}, 800, function(){
+      $(this).removeAttr('style').hide();
+    });
+  },
+  start: function(){
+  	pulseMotion = setInterval(pulse.motion, 2500);
+  },
+  stop: function(){
+  	clearInterval(pulseMotion);
+  }
+};;var menu = function(){
+
+	var event_type = (typeof window.Touch == 'object') ? 'touchend' : 'click'
+	,	the_class = 'visible'
+	,	nav_show = $('.nav-show')
+	,	nav_hide = $('.nav-hide')
+	,	nav = $('.sitenav');
+
+	function init(){
+		events();
+	}
+
+	function events(){
+		nav_show.on( event_type, show );
+		nav_hide.on( event_type, hide );
+	}
+
+	function show(){
+		nav.addClass( the_class );
+		nav_show.hide();
+		nav_hide.show();
+	}
+
+	function hide(){
+		nav.removeClass( the_class );
+		nav_show.removeAttr('style');
+		nav_hide.removeAttr('style');
+	}
+
+	return {
+		init: init
+	}
+
+}();;var size = function(){
+
+	var w, h;
+
+	function init(){
+		events();
+	}
+
+	function events(){
+		$(window).on('load resize', function(){
+
+			// w = window.innerWidth
+			// 	|| document.documentElement.clientWidth
+			// 	|| document.body.clientWidth;
+
+			h = window.innerHeight
+				|| document.documentElement.clientHeight
+				|| document.body.clientHeight;
+
+			setSize();
+		});
+	}
+
+	function setSize(){
+		$('.fullsize').each(function(){
+			$(this).css('height', h);
+		});
+	}
+
+	return {
+		init: init
+	}
+
+}();;/* ========================================================================
  * DOM-based Routing
  * Based on http://goo.gl/EUTi53 by Paul Irish
  *
@@ -2118,6 +2199,8 @@ var Roots = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
+      menu.init();
+      size.init();
     }
   },
   // Home page

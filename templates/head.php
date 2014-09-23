@@ -9,4 +9,6 @@
   <?php wp_head(); ?>
 
   <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo esc_url(get_feed_link()); ?>">
+  <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/d3b201b6-ba6a-4a0a-a9ad-f4f2cf3afe39.css"/>
+  <link href='http://fonts.googleapis.com/css?family=Arbutus+Slab' rel='stylesheet' type='text/css'>
 </head>
