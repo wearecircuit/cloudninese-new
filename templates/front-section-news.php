@@ -18,7 +18,8 @@ $args = array(
 );
 
 // the query
-$the_query = new WP_Query( $args ); ?>
+$the_query = new WP_Query( $args );
+?>
 
 <?php if ( $the_query->have_posts() ) : ?>
 
@@ -27,10 +28,7 @@ $the_query = new WP_Query( $args ); ?>
 
 	<!-- the loop -->
 	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-
-		<?php $img_url = wp_get_attachment_url( get_post_thumbnail_id($the_query->ID) ); ?>
-
-		<article class="news-item" style="background-image:url('<?php echo $img_url; ?>');">
+		<article class="news-item" <?php inline_css( $the_query->ID ); ?>>
 			<span><?php the_field('second_title', $the_query->ID); ?></span>
 			<time datetime="<?php the_time('Y-m-d'); ?>">
 				<span><?php the_time('d M'); ?></span>

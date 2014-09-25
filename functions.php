@@ -66,3 +66,19 @@ class Menu_With_Description extends Walker_Nav_Menu {
     $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
   }
 }
+
+/**
+ * Create inline-css based on featured color and/or featured image.
+ */
+function inline_css( $post_id ){
+  $color = get_field('featured_color', $post_id);
+  $image = wp_get_attachment_url( get_post_thumbnail_id( $post_id ) );
+  $style = '';
+  if( !empty($color) || !empty($image) ){
+    $style .= "style=\"";
+    if ( !empty($color) ) $style .= "background-color:$color;";
+    if ( !empty($image) ) $style .= "background-image:url($image);";
+    $style .= "\"";
+  }
+  echo $style;
+}

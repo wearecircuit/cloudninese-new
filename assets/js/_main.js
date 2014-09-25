@@ -25,6 +25,7 @@ var Roots = {
       // JavaScript to be fired on all pages
       menu.init();
       size.init();
+      eventbrite.init();
     }
   },
   // Home page

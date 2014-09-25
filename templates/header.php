@@ -12,8 +12,8 @@
 
 <header class="banner">
 	<div class="navbar-header">
-		<a href="#" class="logo"><img src="<?php bloginfo('template_directory'); ?>/assets/img/logo.svg"></a>
-		<a href="#" class="nav-btn nav-show"><img src="<?php bloginfo('template_directory'); ?>/assets/img/menu.svg"></a>
-		<a href="#" class="nav-btn nav-hide"><img src="<?php bloginfo('template_directory'); ?>/assets/img/menu_close.svg"></a>
+		<a href="#" class="logo"></a>
+		<a href="#" class="nav-btn nav-show"></a>
+		<a href="#" class="nav-btn nav-hide"></a>
 	</div>
 </header>

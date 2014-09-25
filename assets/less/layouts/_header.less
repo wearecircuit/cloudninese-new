@@ -16,17 +16,28 @@
 	left: 0;
 	z-index: 100;
 	width: 100%;
-	padding: 15px;
+	padding: 40px 40px 0;
 
 	img { height: 20px; }
 
 	.logo {
 		float: left;
+		&:before { .cn-icon(@cn-logo); }
 	}
 
 	.nav-btn {
 		float: right;
-		&.nav-show {}
-		&.nav-hide { display: none; }
+		&.nav-show {
+			&:before { .cn-icon(@cn-menu); }
+		}
+		&.nav-hide {
+			&:before { .cn-icon(@cn-menu-close); }
+			display: none;
+		}
+	}
+
+	a {
+		&:before { color: @white; }
+		&:hover { text-decoration: none; }
 	}
 }

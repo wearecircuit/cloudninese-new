@@ -2174,6 +2174,25 @@
 		init: init
 	}
 
+}();;var eventbrite = function(){
+
+	var url = 'https://www.eventbriteapi.com/json/event_search'
+	,	obj = {app_key: 'UURJTO3QTH2BATRGQX'};
+
+	function init(){
+		$.getJSON( url, obj )
+			.done(function( data ){
+				console.log( 'done', data );
+			})
+			.fail(function(){
+				console.log( 'fail' );
+			});
+	}
+
+	return {
+		init: init
+	}
+
 }();;/* ========================================================================
  * DOM-based Routing
  * Based on http://goo.gl/EUTi53 by Paul Irish
@@ -2201,6 +2220,7 @@ var Roots = {
       // JavaScript to be fired on all pages
       menu.init();
       size.init();
+      eventbrite.init();
     }
   },
   // Home page

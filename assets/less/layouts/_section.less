@@ -8,10 +8,11 @@ section {
 	}
 }
 
-.static {
+.quote {
+	a { color: @brand-blue; }
 	img {
 		width: 150px;
-		margin-bottom: 20px;
+		margin-bottom: 25px;
 	}
 	p { margin-bottom: 0; }
 }
@@ -54,19 +55,25 @@ section {
 	background-image: url('@{img-path}/videoexample.png');
 }
 
-.twitter {
-	a { color: @brand-blue; }
-	img { width: 150px; margin-bottom: 25px; }
+footer {
+	background-color: @brand-blue;
+
+	.ninja-forms-form {
+		width: 65%;
+		margin: 0 auto;
+	}
+
+	h2, p, span { color: @white; }
+	form { color: @brand-blue; }
 }
 
 .contact-form {
-	background-color: @brand-blue;
-	color: @white;
+	
 }
 
 .career {
+	background-color: @brand-pink;
 	background-image: url('@{img-path}/bg_pink_small.svg');
 	background-size: contain;
 	background-repeat: repeat;
-	color: @white;
 }
