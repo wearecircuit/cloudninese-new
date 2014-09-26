@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   var jsFileList = [
+    'node_modules/dot/doT.min.js',
     'assets/vendor/bootstrap/js/transition.js',
     'assets/vendor/bootstrap/js/alert.js',
     'assets/vendor/bootstrap/js/button.js',

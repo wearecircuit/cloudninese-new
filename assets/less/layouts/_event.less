@@ -1,0 +1,62 @@
+.event {
+	background-color: @gray-light;
+	.figure-wrap {
+		.content;
+		.make-sm-column(3);
+		.make-sm-column-offset(1);
+	}
+	figure {
+		display: inline-block;
+		img {
+			width: 100px;
+			position: absolute;
+			bottom: 20px;
+			left: -50px;
+			border-radius: 100%;
+		}
+		time {
+			display: inline-block;
+			span {
+				color: @white;
+				display: inline-block;
+				border-radius: 100%;
+				text-align: center;
+				&.date {
+					width: 200px;
+					height: 200px;
+					font-size: 7em;
+					line-height: 1.8;
+					background-color: @brand-pink;
+				}
+				&.month {
+					position: absolute;
+					top: -10px;
+					right: -10px;
+					width: 100px;
+					height: 100px;
+					font-size: 1.3em;
+					line-height: 5;
+					text-transform: uppercase;
+					#translucent.background(darken(@brand-pink, 10%), 0.5);
+				}
+			}
+		}
+		&, time { position: relative; }
+	}
+	article { 
+		.make-sm-column(7);
+		color: @brand-pink;
+		.btn {
+			background-color: @brand-pink;
+			border: 0;
+			color: @white;
+		}
+		p {
+			margin: 0;
+			i {
+				font-size: 1.5em;
+				margin-right: 5px;
+			}
+		}
+	}
+}

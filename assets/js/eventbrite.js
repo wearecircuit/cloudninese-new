@@ -1,16 +1,64 @@
 var eventbrite = function(){
 
-	var url = 'https://www.eventbriteapi.com/json/event_search'
-	,	obj = {app_key: 'UURJTO3QTH2BATRGQX'};
+	// Eventbrite data.
+	var uid = '99452424679'
+	,	url = 'https://www.eventbriteapi.com/v3/users/'+ uid +'/owned_events/'
+	,	key = {token: '4BWLTDSO63WYJPZSE7DV'};
 
+	// doT.js template function.
+	var tplFn;
+
+	// Load local event template.
+	$.ajax({
+		url: 'wp-content/themes/cloudnine/assets/js/event.tpl',
+		success: function( data ){
+			tplFn = doT.template( data );
+		}
+	});
+
+	// Load event data from Eventbrite.
 	function init(){
-		$.getJSON( url, obj )
-			.done(function( data ){
-				console.log( 'done', data );
+		$.ajax({url: url, data: key,})
+			.done(function( data ){	
+				output( data.events );
 			})
 			.fail(function(){
-				console.log( 'fail' );
+				console.log('Request failed.');
 			});
+	}
+
+	// Create output based on event data.
+	function output( data ){
+		var elm = $('.eventbrite');
+
+		// Get object with status 'live'.
+		var obj;
+		for(var i=0; i<data.length; i++){
+			if(data[i].status == 'live'){
+				obj = data[i];
+				break;
+			}
+		}
+
+		// Date based on data.
+		var d = new Date( obj.start.local )
+		,	m = ['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec'];
+
+		if( elm.length ){
+			// Model for template.
+			var model = {
+				logo: obj.logo.url,
+				date: d.getDate(),
+				month: m[d.getMonth()],
+				format: obj.format.short_name,
+				title: obj.name.text,
+				url1: obj.url,
+				url2: obj.organizer.url
+			};
+
+			// Apply model to template and append to HTML.
+			elm.html(tplFn( model ));
+		}
 	}
 
 	return {

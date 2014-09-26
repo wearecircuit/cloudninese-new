@@ -9,6 +9,11 @@ section {
 }
 
 .quote {
+	article {
+		.content;
+		.make-sm-column(8);
+		.make-sm-column-offset(2);
+	}
 	a { color: @brand-blue; }
 	img {
 		width: 150px;
@@ -18,11 +23,9 @@ section {
 }
 
 .news-item {
+	.make-sm-column(6);
 	@padding: 75px;
-
-	width: 50%;
 	height: 400px;
-	float: left;
 	padding: @padding;
 	color: @white;
 	position: relative;
@@ -35,40 +38,19 @@ section {
 	}
 }
 
-.event {
-
-}
-
 .about {
 	background-image: url('@{img-path}/bigimage2.png');
 
-	.container {
-		position: relative;
-		z-index: 100;
-		top: 25%;
+	article {
+		.content;
+		.make-sm-column(8);
+		.make-sm-column-offset(2);
+		color: @white;
 	}
-
-	.center-content { color: @white; }
 }
 
 .people {
 	background-image: url('@{img-path}/videoexample.png');
-}
-
-footer {
-	background-color: @brand-blue;
-
-	.ninja-forms-form {
-		width: 65%;
-		margin: 0 auto;
-	}
-
-	h2, p, span { color: @white; }
-	form { color: @brand-blue; }
-}
-
-.contact-form {
-	
 }
 
 .career {

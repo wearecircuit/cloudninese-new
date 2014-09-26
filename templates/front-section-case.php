@@ -29,12 +29,12 @@ $the_query = new WP_Query( $args ); ?>
 	<!-- the loop -->
 	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 		<section class="case fullsize" <?php inline_css( $post->ID ); ?>>
-			<div class="container center-content">
-				<span class="title1"><?php echo $post->post_title; ?></span>
-				<p><?php the_field('second_title', $post->ID); ?> <a href="<?php the_permalink(); ?>">Se case</a></p>
-				<figure>
-					<img src="<?php bloginfo('template_directory'); ?>/assets/img/arrow_down.svg" alt="">
-				</figure>
+			<div class="container">
+				<article>
+					<span class="title1"><?php echo $post->post_title; ?></span>
+					<p><?php the_field('second_title', $post->ID); ?> <a href="<?php the_permalink(); ?>">Se case</a></p>
+					<button class="cn cn-arrow-down"></button>
+				</article>
 			</div>
 		</section>
 	<?php endwhile; ?>

@@ -3,17 +3,28 @@
 	color: @white;
 
 	.container {
-		position: relative;
 		top: 50%;
 		height: 50%;
 	}
 
 	a { color: @brand-blue; }
 
-	figure {
+	button {
+		padding: 0;
+		border: 0;
+		background: none;
 		position: absolute;
 		bottom: 0;
+		left: 0;
 		width: 100%;
-		text-align: center;
+		&:before { font-size: 3em; }
+	}
+
+	article {
+		.content;
+		.make-sm-column(8);
+		.make-sm-column-offset(2);
+		color: @white;
+		height: 100%;
 	}
 }

@@ -22,13 +22,14 @@
 
 	.logo {
 		float: left;
-		&:before { .cn-icon(@cn-logo); }
+		// &:before { .cn-icon(@cn-cloudnine); }
+		&:before { .cn-icon(); }
 	}
 
 	.nav-btn {
 		float: right;
 		&.nav-show {
-			&:before { .cn-icon(@cn-menu); }
+			&:before { .cn-icon(@cn-menu-open); }
 		}
 		&.nav-hide {
 			&:before { .cn-icon(@cn-menu-close); }

@@ -14,48 +14,44 @@
 // -------------- Variables --------------
 
 @cn-arrow-down:		"\e600";
-@cn-logo:			"\e601";
-@cn-menu-close:		"\e602";
-@cn-contact:		"\e603";
-@cn-news:			"\e604";
-@cn-people:			"\e605";
-@cn-portfolio:		"\e606";
-@cn-menu:			"\e607";
-@cn-pen-ruler:		"\e608";
-@cn-pink-rabbit:	"\e609";
+@cn-contact:		"\e60a";
+@cn-envelope:		"\e604";
+@cn-menu-close:		"\e609";
+@cn-menu-open:		"\e60e";
+@cn-news:			"\e60b";
+@cn-news-circle:	"\e605";
+@cn-pen-ruler:		"\e60f";
+@cn-people:			"\e60c";
+@cn-pink-rabbit:	"\e610";
+@cn-portfolio:		"\e60d";
+
+@cn-cloudnine:		"\e608";
+@cn-facebook:		"\e601";
+@cn-google:			"\e602";
+@cn-linkedin:		"\e603";
+@cn-twitter:		"\e607";
+@cn-rss:			"\e606";
 
 // -------------- CSS --------------
 
-.cn-arrow-down:before {
-	content: @cn-arrow-down;
-}
-.cn-logo:before {
-	content: @cn-logo;
-}
-.cn-menu-close:before {
-	content: @cn-menu-close;
-}
-.cn-contact:before {
-	content: @cn-contact;
-}
-.cn-news:before {
-	content: @cn-news;
-}
-.cn-people:before {
-	content: @cn-people;
-}
-.cn-portfolio:before {
-	content: @cn-portfolio;
-}
-.cn-menu:before {
-	content: @cn-menu;
-}
-.cn-pen-ruler:before {
-	content: @cn-pen-ruler;
-}
-.cn-pink-rabbit:before {
-	content: @cn-pink-rabbit;
-}
+.cn-arrow-down 		{&:before { content: @cn-arrow-down; }}
+.cn-contact 		{&:before { content: @cn-contact; }}
+.cn-envelope		{&:before { content: @cn-envelope; }}
+.cn-menu-close 		{&:before { content: @cn-menu-close; }}
+.cn-menu-open 		{&:before { content: @cn-menu-open; }}
+.cn-news 			{&:before { content: @cn-news; }}
+.cn-news-circle 	{&:before { content: @cn-news-circle; }}
+.cn-pen-ruler 		{&:before { content: @cn-pen-ruler; }}
+.cn-people 			{&:before { content: @cn-people; }}
+.cn-pink-rabbit 	{&:before { content: @cn-pink-rabbit; }}
+.cn-portfolio 		{&:before { content: @cn-portfolio; }}
+
+.cn-cloudnine 		{&:before { content: @cn-cloudnine; }}
+.cn-facebook 		{&:before { content: @cn-facebook; }}
+.cn-google			{&:before { content: @cn-google; }}
+.cn-linkedin		{&:before { content: @cn-linkedin; }}
+.cn-twitter			{&:before { content: @cn-twitter; }}
+.cn-rss				{&:before { content: @cn-rss; }}
 
 .cn {
 	font-family: 'icomoon';
@@ -73,19 +69,9 @@
 
 // -------------- Mixin --------------
 
-.cn-icon(@icon: @cn-logo) {
+.cn-icon(@icon: @cn-cloudnine) {
 	content: @icon;
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	.cn;
 }
 
 .cn-fw(@fontsize: 20px, @lineheight: 1.5, @align: center){
