@@ -2118,9 +2118,10 @@ o.toString()+"());"+a;try{return new Function(b.varname,a)}catch(n){typeof conso
 };;var menu = function(){
 
 	var event_type = (typeof window.Touch == 'object') ? 'touchend' : 'click'
-	,	the_class = 'visible'
+	,	the_class = 'sitenav-visible'
 	,	nav_show = $('.nav-show')
 	,	nav_hide = $('.nav-hide')
+	,	parent = $('body')
 	,	nav = $('.sitenav');
 
 	function init(){
@@ -2132,16 +2133,26 @@ o.toString()+"());"+a;try{return new Function(b.varname,a)}catch(n){typeof conso
 		nav_hide.on( event_type, hide );
 	}
 
-	function show(){
-		nav.addClass( the_class );
+	function show( ev ){
+		ev.preventDefault();
+		parent.addClass( the_class );
 		nav_show.hide();
 		nav_hide.show();
+
+		// Cancel out scroll
+		// window.onmousewheel = document.onmousewheel = function(ev){
+		// 	ev.preventDefault();
+		// };
 	}
 
-	function hide(){
-		nav.removeClass( the_class );
+	function hide( ev ){
+		ev.preventDefault();
+		parent.removeClass( the_class );
 		nav_show.removeAttr('style');
 		nav_hide.removeAttr('style');
+
+		// Reinstate scroll
+		// window.onmousewheel = document.onmousewheel = null;
 	}
 
 	return {
@@ -2181,6 +2192,57 @@ o.toString()+"());"+a;try{return new Function(b.varname,a)}catch(n){typeof conso
 		init: init
 	}
 
+}();;var footer = function(){
+
+	function init(){
+		$(window).on('scroll', calc);
+	}
+
+	function calc(){
+
+		var w = $(window)
+		,	f = $('footer.content-info')
+		,	c = $('.career')
+		,	e = $('.contact-form')
+		,	x = $('.social-media')
+
+		// Element
+		,	eHeight = e.outerHeight()
+		,	eOffset = e.offset().top
+
+		// Window
+		,	wHeight = w.height()
+		,	wOffset = w.scrollTop()
+
+		// Boxes
+		,	container = eHeight + eOffset + x.outerHeight()
+		,	viewport = wHeight + wOffset
+
+		// Fold
+		,	fold = container - viewport;
+
+		// Position 'career' according to 'social-media' height.
+		c.css('bottom', x.outerHeight());
+
+		var fHeight;
+
+		// Add/remove 'fixed' classes.
+		if( fold <= 0 && !f.hasClass('locked') ){
+			fHeight = c.outerHeight() + e.outerHeight() + x.outerHeight();
+			f.css('height', fHeight ).addClass('locked');
+			c.css('visibility','visible');
+		}
+		else if( fold > 0 && f.hasClass('locked') ) {
+			f.removeAttr('style').removeClass('locked');
+			c.removeAttr('style');
+		}
+
+	}
+
+	return {
+		init: init
+	}
+
 }();;var eventbrite = function(){
 
 	// Eventbrite data.
@@ -2189,25 +2251,30 @@ o.toString()+"());"+a;try{return new Function(b.varname,a)}catch(n){typeof conso
 	,	key = {token: '4BWLTDSO63WYJPZSE7DV'};
 
 	// doT.js template function.
-	var tplFn;
+	var tplFn
+	,	front = $('.home.page');
 
 	// Load local event template.
-	$.ajax({
-		url: 'wp-content/themes/cloudnine/assets/js/event.tpl',
-		success: function( data ){
-			tplFn = doT.template( data );
-		}
-	});
+	if( front.length ){
+		$.ajax({
+			url: 'wp-content/themes/cloudnine/assets/js/eventbrite.tpl',
+			success: function( data ){
+				tplFn = doT.template( data );
+			}
+		});
+	}
 
 	// Load event data from Eventbrite.
 	function init(){
-		$.ajax({url: url, data: key,})
-			.done(function( data ){	
-				output( data.events );
-			})
-			.fail(function(){
-				console.log('Request failed.');
-			});
+		if( front.length ){
+			$.ajax({url: url, data: key,})
+				.done(function( data ){	
+					output( data.events );
+				})
+				.fail(function(){
+					console.log('Request failed.');
+				});
+		}
 	}
 
 	// Create output based on event data.
@@ -2248,6 +2315,86 @@ o.toString()+"());"+a;try{return new Function(b.varname,a)}catch(n){typeof conso
 		init: init
 	}
 
+}();;var googleMap = function(){
+
+	var styles = [
+	  {
+	    "featureType": "water",
+	    "stylers": [
+	      { "visibility": "simplified" },
+	      { "invert_lightness": true },
+	      { "color": "#38aae1" }
+	    ]
+	  },{
+	    "featureType": "road",
+	    "elementType": "labels",
+	    "stylers": [
+	      { "visibility": "simplified" }
+	    ]
+	  },{
+	    "featureType": "poi",
+	    "stylers": [
+	      { "visibility": "off" }
+	    ]
+	  },{
+	    "featureType": "landscape",
+	    "stylers": [
+	      { "hue": "#0091ff" }
+	    ]
+	  },{
+	    "featureType": "road",
+	    "elementType": "geometry.stroke",
+	    "stylers": [
+	      { "visibility": "off" }
+	    ]
+	  },{
+	    "featureType": "road",
+	    "elementType": "geometry.fill",
+	    "stylers": [
+	      { "visibility": "on" },
+	      { "lightness": 100 }
+	    ]
+	  }
+	];
+
+	var canvas = document.getElementById('map-canvas')
+	,	coords = new google.maps.LatLng(59.3340906, 18.0981453)
+	,	map;
+	
+	var image = {
+		url: 'http://local.cloudnine.se/wp-content/themes/cloudnine/assets/img/poi-heart.svg',
+		// size: new google.maps.Size(20, 32),
+		// origin: new google.maps.Point(0,0),
+		// anchor: new google.maps.Point(0, 32)
+	};
+
+	function init(){
+
+		// var styledMap = new google.maps.StyledMapType(styles, {name: 'Styled Map'});
+
+
+		map = new google.maps.Map(canvas, {
+			zoom: 15,
+			center: coords,
+			// mapTypeControlOptions: {
+			// 	mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+			// }
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			styles: styles
+		});
+
+		var marker = new google.maps.Marker({
+			position: coords,
+			icon: image,
+			map: map
+		});
+
+		// map.mapTypes.set('map_style', styledMap);
+		// map.setMapTypeId('map_style');
+	}
+
+	google.maps.event.addDomListener(window, 'load', init);
+
 }();;/* ========================================================================
  * DOM-based Routing
  * Based on http://goo.gl/EUTi53 by Paul Irish
@@ -2275,6 +2422,7 @@ var Roots = {
       // JavaScript to be fired on all pages
       menu.init();
       size.init();
+      footer.init();
       eventbrite.init();
     }
   },

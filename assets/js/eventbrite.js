@@ -6,25 +6,30 @@ var eventbrite = function(){
 	,	key = {token: '4BWLTDSO63WYJPZSE7DV'};
 
 	// doT.js template function.
-	var tplFn;
+	var tplFn
+	,	front = $('.home.page');
 
 	// Load local event template.
-	$.ajax({
-		url: 'wp-content/themes/cloudnine/assets/js/event.tpl',
-		success: function( data ){
-			tplFn = doT.template( data );
-		}
-	});
+	if( front.length ){
+		$.ajax({
+			url: 'wp-content/themes/cloudnine/assets/js/eventbrite.tpl',
+			success: function( data ){
+				tplFn = doT.template( data );
+			}
+		});
+	}
 
 	// Load event data from Eventbrite.
 	function init(){
-		$.ajax({url: url, data: key,})
-			.done(function( data ){	
-				output( data.events );
-			})
-			.fail(function(){
-				console.log('Request failed.');
-			});
+		if( front.length ){
+			$.ajax({url: url, data: key,})
+				.done(function( data ){	
+					output( data.events );
+				})
+				.fail(function(){
+					console.log('Request failed.');
+				});
+		}
 	}
 
 	// Create output based on event data.

@@ -23,7 +23,9 @@ module.exports = function(grunt) {
     'assets/js/pulse.js',
     'assets/js/menu.js',
     'assets/js/size.js',
+    'assets/js/footer.js',
     'assets/js/eventbrite.js',
+    'assets/js/googleMap.js',
     'assets/js/_main.js'
   ];
 

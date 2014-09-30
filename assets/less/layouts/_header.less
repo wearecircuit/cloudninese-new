@@ -2,12 +2,28 @@
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	top: -100%;
+	top: -110%;
 	left: 0;
 	z-index: 50;
-	background-color: @brand-blue;
+	// background-color: @brand-blue;
+	#translucent .background(@brand-blue, .95);
 	.transition(all .25s);
-	&.visible { top: 0; }
+
+	// &.visible { top: 0; }
+
+	li a {
+		.transition(all .25s);
+		&:hover {
+			color: darken(@brand-blue, 20%);
+		}
+	}
+}
+
+.sitenav-visible {
+	// overflow-y: hidden;
+	.sitenav {
+		top: 0;
+	}
 }
 
 .banner {
@@ -41,4 +57,17 @@
 		&:before { color: @white; }
 		&:hover { text-decoration: none; }
 	}
+}
+
+.banner a:before {
+	.page &, .single &, .blog & {
+		color: @black;
+	}
+	.home.page & {
+		color: @white;
+	}
+}
+
+.page-header {
+	color: red;
 }

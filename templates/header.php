@@ -12,8 +12,8 @@
 
 <header class="banner">
 	<div class="navbar-header">
-		<a href="#" class="logo"></a>
-		<a href="#" class="nav-btn nav-show"></a>
-		<a href="#" class="nav-btn nav-hide"></a>
+		<a href="/" class="logo"></a>
+		<a href="" class="nav-btn nav-show"></a>
+		<a href="" class="nav-btn nav-hide"></a>
 	</div>
 </header>

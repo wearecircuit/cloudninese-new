@@ -1,5 +1,14 @@
 <footer class="content-info" role="contentinfo">
 
+	<section class="career">
+		<div class="container">
+			<article>
+				<h2>Wow <i class="cn cn-people"></i> har du kollat ända hit är du garanterat nyfiken nog för att bli en av oss.</h2>
+				<p>Vi söker alltid efter nyfikna talanger. <a href="#">Se hit vettja!</a></p>
+			</article>
+		</div>
+	</section>
+
 	<section class="contact-form air">
 		<div class="container">
 			<article>
@@ -9,15 +18,7 @@
 			</article>
 		</div>
 	</section>
-
-	<section class="career air shade">
-		<div class="container">
-			<article>
-				<h2>Wow <i class="cn cn-people"></i> har du kollat ända hit är du garanterat nyfiken nog för att bli en av oss.</h2>
-				<p>Vi söker alltid efter nyfikna talanger. <a href="#">Se hit vettja!</a></p>
-			</article>
-		</div>
-	</section>
+	<section class="shade"></section>
 
 	<section class="social-media air">
 		<div class="container">

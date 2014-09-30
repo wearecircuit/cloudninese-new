@@ -10,9 +10,7 @@ section {
 
 .quote {
 	article {
-		.content;
-		.make-sm-column(8);
-		.make-sm-column-offset(2);
+		.center;
 	}
 	a { color: @brand-blue; }
 	img {
@@ -27,7 +25,6 @@ section {
 	@padding: 75px;
 	height: 400px;
 	padding: @padding;
-	color: @white;
 	position: relative;
 	background-position: center top;
 
@@ -42,20 +39,22 @@ section {
 	background-image: url('@{img-path}/bigimage2.png');
 
 	article {
-		.content;
-		.make-sm-column(8);
-		.make-sm-column-offset(2);
-		color: @white;
+		.center;
 	}
 }
 
 .people {
 	background-image: url('@{img-path}/videoexample.png');
-}
-
-.career {
-	background-color: @brand-pink;
-	background-image: url('@{img-path}/bg_pink_small.svg');
-	background-size: contain;
-	background-repeat: repeat;
+	.interviewee {
+		position: absolute;
+		top: 20px;
+		left: 20px;
+		color: @white;
+	}
+	article {
+		text-align: center;
+		h2 {
+			font-family: @serif;
+		}
+	}
 }

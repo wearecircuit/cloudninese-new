@@ -3,13 +3,21 @@ form {
 		padding: 10px;
 		border: 0;
 		border-radius: 0;
-		outline: none;
+		&, &:focus {
+			outline: none!important;
+		}
 	}
 
 	button,
 	input[type="button"],
 	input[type="submit"] {
-		color: @white;
 		background: none;
+		.transition(background-color .25s);
+		&:hover {
+			background-color: hsla(0,100%,100%,.2);
+		}
+		&, &:hover, &:focus, &:active {
+			color: @white;
+		}
 	}
 }

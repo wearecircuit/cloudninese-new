@@ -5,9 +5,9 @@
 .main {
   .make-sm-column(@main-sm-columns);
   padding: 0;
-  .sidebar-primary & {
-    .make-sm-column(@main-sm-columns - @sidebar-sm-columns);
-  }
+  // .sidebar-primary & {
+  //   .make-sm-column(@main-sm-columns - @sidebar-sm-columns);
+  // }
 }
 
 // General
@@ -19,19 +19,37 @@
 	}
 }
 
-.content {
+.center {
 	text-align: center;
+	.make-sm-column(8);
+	.make-sm-column-offset(2);
 }
 
-section.air { padding: 50px 0; }
+.air { padding: 50px 0; }
 
-.overlay:before {
-	content: "";
-	width: 100%;
-	height: 100%;
-	background-color: @overlay-black;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 0;
+.overlay{
+	&:before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		background-color: @overlay-black;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+	}
+}
+
+.news-item,
+.overlay article {
+	color: @white;
+}
+
+main.main {
+	/*.page &, */.single &, .blog & {
+		margin-top: 100px;
+	}
+	.home.page & {
+		margin-top: 0px;
+	}
 }

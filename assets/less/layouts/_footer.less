@@ -1,26 +1,54 @@
 footer.content-info {
 	clear: both;
+	position: relative;
+	.transition(all .1s);
 
-	background-color: @brand-blue;
+	section {
+		background-color: @brand-blue;
+	}
 
 	h2, p, span { color: @white; }
 	form { color: @brand-blue; }
 
 	.ninja-forms-form {
-		width: 60%;
+		// width: 60%;
+		.make-sm-column(9);
 		margin: 0 auto;
+		float: none!important;
 	}
 
 	article {
-		.content;
+		text-align: center;
 		.make-sm-column(8);
 		.make-sm-column-offset(2);
 	}
 
+	.career {
+		visibility: hidden;
+		position: fixed;
+		width: 100%;
+
+		background-color: @brand-pink;
+		background-image: url('@{img-path}/bg_pink_small.svg');
+		background-size: contain;
+		background-repeat: repeat;
+		article {
+			.make-sm-column(8);
+			.make-sm-column-offset(2);
+			color: @white;
+			text-align: center;
+		}
+	}
+
+	.contact-form {
+		z-index: 2;
+	}
+
 	.social-media {
+		z-index: 0;
 		p {
 			text-align: center;
-			margin-bottom: 100px;
+			margin-bottom: 0;
 		}
 		a {
 			font-size: 4em;
@@ -32,16 +60,24 @@ footer.content-info {
 	}
 
 	.shade {
-		overflow: hidden;
-		&:before {
+		z-index: 1;
+		&:after {
 			content: "";
 			position: absolute;
 			width: 100%;
-			top: -80px;
+			bottom: 30px;
 			left: 0;
 			height: 50px;
-			.box-shadow(30px 40px 90px 10px hsla(0,0%,0%,.75));
+			.box-shadow(30px 40px 90px 10px hsla(0,0%,0%,1));
 			.rotate(2deg);
+		}
+	}
+
+	&.locked {
+		.social-media {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
 		}
 	}
 }

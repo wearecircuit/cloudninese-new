@@ -23,8 +23,11 @@ Template Name: Startpage Template
 	</section>
 
 	<section class="people fullsize overlay">
+		<span class="interviewee">Jan Järfalk - Interaktionsdesigner</span>
 		<div class="container">
-
+			<article>
+				<h2>Ge mig ett buzzword!<br>&rdquo;Single page application&rdquo;</h2>
+			</article>
 		</div>
 	</section>
 
