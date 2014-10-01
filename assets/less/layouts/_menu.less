@@ -1,6 +1,6 @@
 .nav {
 	width: 50%;
-	margin: 10% auto 0;
+	margin: 100px auto 0;
 	color: @white;
 
 	li {
@@ -34,4 +34,12 @@ a:before {
 	.menu-personer & { .cn-icon(@cn-people); }
 	.menu-kontakt & { .cn-icon(@cn-contact); }
 	.menu-blogg & { .cn-icon(@cn-news); }
+}
+
+
+@media (max-width: @screen-sm-min) {
+	.nav {
+		margin-top: 120px;
+		.sub { display: none; }
+	}
 }

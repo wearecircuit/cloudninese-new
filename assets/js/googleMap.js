@@ -45,37 +45,50 @@ var googleMap = function(){
 	,	map;
 	
 	var image = {
-		url: 'http://local.cloudnine.se/wp-content/themes/cloudnine/assets/img/poi-heart.svg',
-		// size: new google.maps.Size(20, 32),
-		// origin: new google.maps.Point(0,0),
-		// anchor: new google.maps.Point(0, 32)
+		url: 'http://local.cloudnine.se/wp-content/themes/cloudnine/assets/img/poi_50procent.svg',
+		size: new google.maps.Size(50, 50),
+		origin: new google.maps.Point(100,100),
+		// anchor: new google.maps.Point(0,0)
 	};
 
-	function init(){
+	var contentString = '<div id="content">'+
+							'<div id="siteNotice"></div>'+
+							'<div id="bodyContent">'+
+								'<strong>Cloud Nine AB</strong>'+
+								'<p>Lorem ipsum dolor sit amet..</p>'+
+							'</div>'+
+						'</div>';
 
-		// var styledMap = new google.maps.StyledMapType(styles, {name: 'Styled Map'});
-
+	function setMapAndMarker(){
 
 		map = new google.maps.Map(canvas, {
 			zoom: 15,
-			center: coords,
-			// mapTypeControlOptions: {
-			// 	mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-			// }
+			center: new google.maps.LatLng(59.3360906, 18.0981453),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			styles: styles
 		});
 
-		var marker = new google.maps.Marker({
-			position: coords,
-			icon: image,
-			map: map
+		var infowindow = new google.maps.InfoWindow({
+			content: contentString
 		});
 
-		// map.mapTypes.set('map_style', styledMap);
-		// map.setMapTypeId('map_style');
+		var marker = new google.maps.Marker({
+			position: coords,
+			map: map,
+			// icon: image
+		});
+
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.open(map,marker);
+		});
 	}
 
-	google.maps.event.addDomListener(window, 'load', init);
+	function init(){
+		google.maps.event.addDomListener(window, 'load', setMapAndMarker);
+	}
+
+	return {
+		init: init
+	}
 
 }();

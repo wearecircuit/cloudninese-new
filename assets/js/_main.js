@@ -26,19 +26,26 @@ var Roots = {
       menu.init();
       size.init();
       footer.init();
-      eventbrite.init();
     }
   },
   // Home page
   home: {
     init: function() {
       // JavaScript to be fired on the home page
+      eventbrite.init();
     }
   },
   // About us page, note the change from about-us to about_us.
   about_us: {
     init: function() {
       // JavaScript to be fired on the about us page
+    }
+  },
+  // Contact page
+  page_id_28: {
+    init: function(){
+      // JavaScript to be fired on the contact page
+      googleMap.init();
     }
   }
 };

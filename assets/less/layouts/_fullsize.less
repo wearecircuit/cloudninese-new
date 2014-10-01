@@ -1,0 +1,58 @@
+.fullsize {
+
+	color: @white;
+
+	.container {
+		top: 40%;
+		height: 60%;
+	}
+
+	// a { color: @brand-blue; }
+
+	button {
+		padding: 0;
+		border: 0;
+		background: none;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		&:before { font-size: 3em; }
+	}
+
+	article {
+		text-align: center;
+		.make-sm-column(8);
+		.make-sm-column-offset(2);
+		height: 100%;
+	}
+
+	.case& {
+
+	}
+
+	.fullsize-nav {
+		.nav-btn {
+			font-size: 0;
+			position: absolute;
+			top: 50%;
+			@color: hsla(0,100%,100%,.5);
+			&.nav-left {
+				left: 0;
+				&:after { border-color: transparent transparent transparent @color; }
+			}
+			&.nav-right {
+				right: 0;
+				&:after { border-color: transparent @color transparent transparent; }
+			}
+			&:after {
+				content: "";
+				width: 0;
+				height: 0;
+				border-width: 50px;
+				border-style: solid;
+			}
+		}
+	}
+
+}

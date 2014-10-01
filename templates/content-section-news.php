@@ -35,7 +35,7 @@ $the_query = new WP_Query( $args );
 				<span><?php the_time('Y'); ?></span>
 			</time>
 			<h2><?php the_title(); ?></h2>
-			<p><a href="<?php the_permalink(); ?>" class="btn">Läs</a><a href="#">Se alla inlägg</a></p>
+			<p><a href="<?php the_permalink(); ?>" class="btn">Läs</a><a href="/blogg">Se alla inlägg</a></p>
 		</article>
 	<?php endwhile; ?>
 	<!-- end of the loop -->

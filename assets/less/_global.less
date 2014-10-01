@@ -6,12 +6,26 @@ body {
 }
 
 img {
-	max-width: 100%;
+	// max-width: 100%;
 }
 
 blockquote {
 	border: none;
 	padding: 0;
+}
+
+figure.portrait {
+	text-align: center;
+	margin: 20px 0;
+	img {
+		width: 120px;
+		margin: 20px 0;
+	}
+}
+
+article.article {
+	.make-sm-column(8);
+	.make-sm-column-offset(2);
 }
 
 .title1, .title2 { display: block; }

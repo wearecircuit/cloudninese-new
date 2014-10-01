@@ -13,11 +13,6 @@ section {
 		.center;
 	}
 	a { color: @brand-blue; }
-	img {
-		width: 150px;
-		margin-bottom: 25px;
-	}
-	p { margin-bottom: 0; }
 }
 
 .news-item {
@@ -27,6 +22,8 @@ section {
 	padding: @padding;
 	position: relative;
 	background-position: center top;
+
+	h2 { font-size: 42px; }
 
 	p {
 		margin: 0;
@@ -56,5 +53,13 @@ section {
 		h2 {
 			font-family: @serif;
 		}
+	}
+}
+
+.contact {
+	article { .center; }
+	header {  }
+	figure {
+		.make-sm-column(6);
 	}
 }

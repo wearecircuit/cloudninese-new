@@ -12,8 +12,8 @@
 	<section class="contact-form air">
 		<div class="container">
 			<article>
-				<span class="title2">&rdquo;We&rsquo;ll take you there.&rdquo;</span>
-				<h2>&mdash;<br>Ska vi träffas och guida dig fram?</h2>
+				<span class="title2">&rdquo;We&rsquo;ll take you there&rdquo;</span>
+				<h3>Ska vi träffas och guida dig fram?</h3>
 				<?php if( function_exists( 'ninja_forms_display_form' ) ){ ninja_forms_display_form( 2 ); } ?>
 			</article>
 		</div>
@@ -25,7 +25,7 @@
 			<p>
 				<a href="https://twitter.com/c9stockholm" class="cn cn-twitter"></a>
 				<a href="https://www.facebook.com/cloudninestockholm" class="cn cn-facebook"></a>
-				<a href="#" class="cn cn-google"></a>
+				<!-- <a href="#" class="cn cn-google"></a> -->
 				<a href="https://www.linkedin.com/company/cloud-nine" class="cn cn-linkedin"></a>
 				<span>
 					<a href="mailto:info@cloudnine.se" class="cn cn-envelope"></a>

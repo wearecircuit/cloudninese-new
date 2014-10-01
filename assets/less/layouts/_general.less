@@ -45,11 +45,24 @@
 	color: @white;
 }
 
-main.main {
-	/*.page &, */.single &, .blog & {
-		margin-top: 100px;
+.btn, button,
+input[type="button"],
+input[type="submit"] {
+	background: none;
+	.transition(background-color .25s);
+	&:hover {
+		background-color: hsla(0,100%,100%,.2);
 	}
-	.home.page & {
-		margin-top: 0px;
+	&, &:hover, &:focus, &:active {
+		color: @white;
 	}
 }
+
+// main.main {
+// 	.page &, .single &, .blog & {
+// 		margin-top: 100px;
+// 	}
+// 	.home.page & {
+// 		margin-top: 0px;
+// 	}
+// }
